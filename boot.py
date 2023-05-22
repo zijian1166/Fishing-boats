@@ -222,7 +222,7 @@ def calculate_motor_speed(channel3, channel4):
 
     left_speed = int(channel3 / speed_range * max_speed)
     right_speed = int(channel3 / speed_range * max_speed)
-    bias = int(channel4 / speed_range * max_speed * 0.3)
+    bias = int(channel4 / speed_range * max_speed * 0.8)
 
     if channel4 >= 0:  # 右转
         right_speed -= bias
@@ -344,10 +344,11 @@ while True:
                 right_speed = 0
 
             if open_boat == 1:
-                left_speed = int(left_speed * 0.5)
-                right_speed = int(right_speed * 0.5)
+                left_speed = int(left_speed * 1)
+                right_speed = int(right_speed * 1)
                 Pin25_pwm.duty(left_speed)
                 Pin26_pwm.duty(right_speed)
             else:
                 Pin25_pwm.duty(0)
                 Pin26_pwm.duty(0)
+
